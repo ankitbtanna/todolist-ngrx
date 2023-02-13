@@ -42,19 +42,20 @@
           display: flex;
           place-items: center;
           justify-content: center;
+          font-weight: bolder;
 
           // glassmorphism
           background: rgba(255, 255, 255, 0.2);
           box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-          backdrop-filter: blur(4px);
-          -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(7px);
+          -webkit-backdrop-filter: blur(7px);
 
           &.active,
           &:hover {
             background: #892be25d;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(10px);
             cursor: pointer;
           }
         }
