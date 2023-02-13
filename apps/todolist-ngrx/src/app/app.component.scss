@@ -1,0 +1,145 @@
+:host {
+  display: grid;
+  grid-template-rows: 7rem 1fr;
+  height: 100%;
+
+  .header {
+    display: grid;
+    place-items: center;
+    background-color: blueviolet;
+    color: white;
+    font-size: 3rem;
+  }
+
+  .content {
+    display: grid;
+    grid-template-rows: 5rem 5rem 1fr;
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+
+    position: relative;
+
+    > * {
+      border: 2px solid red;
+    }
+
+    .categories {
+      display: grid;
+      position: sticky;
+      top: 0;
+      left: 0;
+
+      .todo-categories {
+        list-style: none;
+        display: flex;
+
+        > * {
+          flex: 1;
+          border: 1px solid black;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          place-items: center;
+          justify-content: center;
+
+          // glassmorphism
+          background: rgba(255, 255, 255, 0.2);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(4px);
+          -webkit-backdrop-filter: blur(4px);
+
+          &.active,
+          &:hover {
+            background: #892be25d;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    section {
+      height: auto;
+
+      .todo {
+        height: 5rem;
+        border: 1px solid red;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        &:hover {
+          background-color: #fab3b3;
+          cursor: pointer;
+        }
+
+        > * {
+          height: 100%;
+          display: flex;
+          place-items: center;
+        }
+
+        &--title {
+          font-size: 2rem;
+          padding-left: 1rem;
+        }
+
+        &--actions {
+          font-size: 2rem;
+          display: flex;
+          gap: 1rem;
+
+          > * {
+            flex: 1;
+
+            &:hover {
+              cursor: pointer;
+              font-weight: bold;
+            }
+          }
+
+          .action {
+            &--new {
+              background-color: #510000b6;
+              color: white;
+
+              &:hover {
+                background-color: #510000;
+              }
+            }
+
+            &--active {
+              background-color: rgba(0, 0, 255, 0.689);
+              color: white;
+
+              &:hover {
+                background-color: blue;
+              }
+            }
+
+            &--complete {
+              background-color: rgba(0, 128, 0, 0.684);
+              color: white;
+
+              &:hover {
+                background-color: green;
+              }
+            }
+
+            &--postponed {
+              background-color: rgba(255, 166, 0, 0.72);
+              color: black;
+
+              &:hover {
+                background-color: orange;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

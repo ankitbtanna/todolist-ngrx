@@ -91,7 +91,15 @@ body {
   font-size: 1.6rem;
   font-family: 'Roboto', sans-serif;
   color: #333;
+
+  border: 2px solid red;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

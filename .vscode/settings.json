@@ -1,0 +1,6 @@
+{
+  "html.format.indentInnerHtml": true,
+  "html.format.wrapAttributes": "force-aligned",
+  "editor.autoIndent": "none",
+  "editor.foldingStrategy": "indentation"
+}

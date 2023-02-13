@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todolist-ngrx';
+
+  todos = [
+    ...Array.from({ length: 30 }, (_, i) => ({
+      title: `Todo ${i}`,
+      completed: false,
+    })),
+  ];
 }

@@ -1,15 +1,35 @@
-<header>Header</header>
-<main>
-    <header>
-        <li>
-            <ul class="todo--state">All(20)</ul>
-            <ul class="todo--state">New(5)</ul>
-            <ul class="todo--state">Active(10)</ul>
-            <ul class="todo--state">Done(2)</ul>
-            <ul class="todo--state">Delayed(3)</ul>
+<header class="header">Todo List using NgRx</header>
+<main class="content">
+    <header class="form">Form</header>
+    <header class="categories">
+        <li class="todo-categories">
+            <ul class="todo-categories--state active">
+                All(20)
+            </ul>
+            <ul class="todo-categories--state">
+                New(5)
+            </ul>
+            <ul class="todo-categories--state">
+                Active(10)
+            </ul>
+            <ul class="todo-categories--state">
+                Done(2)
+            </ul>
+            <ul class="todo-categories--state">
+                Delayed(3)
+            </ul>
         </li>
     </header>
     <section>
-        Lists
+        <div class="todo"
+             *ngFor="let todo of todos">
+            <div class="todo--title">{{todo.title}}</div>
+            <div class="todo--actions">
+                <button class="action action--new">New</button>
+                <button class="action action--active">Active</button>
+                <button class="action action--complete">Complete</button>
+                <button class="action action--postponed">Postponed</button>
+            </div>
+        </div>
     </section>
 </main>
