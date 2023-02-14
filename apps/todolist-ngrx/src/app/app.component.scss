@@ -20,10 +20,6 @@
 
     position: relative;
 
-    > * {
-      border: 2px solid red;
-    }
-
     .categories {
       display: grid;
       position: sticky;

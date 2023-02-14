@@ -1,6 +1,15 @@
 <header class="header">Todo List using NgRx</header>
 <main class="content">
-    <header class="form">Form</header>
+    <header class="form">
+        <form class="todo-form">
+            <mat-form-field>
+                <input matInput
+                       placeholder="Add new todo">
+            </mat-form-field>
+            <button mat-raised-button
+                    color="primary">Primary</button>
+        </form>
+    </header>
     <header class="categories">
         <li class="todo-categories">
             <ul class="todo-categories--state active">
