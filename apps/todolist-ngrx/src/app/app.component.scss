@@ -11,6 +11,20 @@
     font-size: 3rem;
   }
 
+  .form {
+    .todo-form {
+      display: grid;
+      height: 100%;
+      grid-template-columns: 2fr 1fr;
+      align-items: center;
+
+      mat-form-field {
+        height: 5rem !important;
+        border: 2px solid blueviolet;
+      }
+    }
+  }
+
   .content {
     display: grid;
     grid-template-rows: 5rem 5rem 1fr;
