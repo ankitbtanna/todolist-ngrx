@@ -1,12 +1,24 @@
-import { Module } from '@nestjs/common';
+import { Todo, TodoSchema } from './todo/schemas/todos.schema';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { TodoController } from './todo/todo.controller';
+import { TodoService } from './todo/services/todo/todo.service';
 
 @Module({
-  imports: [],
+  imports: [
+    MongooseModule.forRootAsync(
+      {
+        useFactory: () => ({
+          uri: 'mongodb+srv://ChromeBookmarkCategorizer:ia5TVpJmv7WwegZx@cluster0.ekeiy.mongodb.net/?retryWrites=true&w=majority/TodoListDB',
+        })
+      }
+    ),
+    MongooseModule.forFeature([{ name: Todo.name, schema: TodoSchema }]),
+  ],
   controllers: [AppController, TodoController],
-  providers: [AppService],
+  providers: [AppService, TodoService],
 })
 export class AppModule {}
