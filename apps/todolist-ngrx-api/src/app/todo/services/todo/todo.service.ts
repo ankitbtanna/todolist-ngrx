@@ -27,12 +27,35 @@ export class TodoService {
   }
 
   async getTodoById(id: string) {
-    const todoByID = await this.todoModel
+    const todoById = await this.todoModel
       .findOne({
         id: id,
       })
       .exec();
 
-    return todoByID;
+    return todoById;
+  }
+
+  async deleteTodoById(id: string) {
+    const deletedTodoById = await this.todoModel
+      .findOneAndRemove({
+        id: id,
+      })
+      .exec();
+
+    return deletedTodoById;
+  }
+  
+  async updateTodoById(id: string, todo) {
+    await this.todoModel.findOneAndUpdate({
+      id: id
+    }, todo).exec();
+    
+    const updatedTodoById = await this.todoModel.findOne({
+      id: id
+    }).exec();
+
+    console.log(updatedTodoById);    
+    return updatedTodoById;
   }
 }
