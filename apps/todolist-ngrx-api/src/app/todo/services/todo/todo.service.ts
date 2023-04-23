@@ -3,8 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Todo } from '../../schemas/todos.schema';
 
-import * as crypto from 'crypto';
-
 @Injectable()
 export class TodoService {
   constructor(
@@ -15,13 +13,8 @@ export class TodoService {
     return this.todoModel.find().exec();
   }
 
-  async createTodo() {
-    const createdTodo = await this.todoModel.create({
-      id: crypto.randomUUID(),
-      task: 'Test',
-      status: 'NEW',
-      date: new Date().toISOString(),
-    });
+  async createTodo(todo) {
+    const createdTodo = await this.todoModel.create(todo);
 
     return createdTodo;
   }
@@ -57,5 +50,10 @@ export class TodoService {
 
     console.log(updatedTodoById);    
     return updatedTodoById;
+  }
+  
+  async deleteAllTodos() {
+    await this.todoModel.deleteMany({ todo: { $ne: null } });
+    return 'OK';
   }
 }

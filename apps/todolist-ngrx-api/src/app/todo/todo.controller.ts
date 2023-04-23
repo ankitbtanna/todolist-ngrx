@@ -12,8 +12,8 @@ export class TodoController {
   }
 
   @Post()
-  createTodo() {
-    return this.todoService.createTodo();
+  createTodo(@Req() req) {
+    return this.todoService.createTodo(req.body);
   }
 
   @Get('/:id')
@@ -23,9 +23,12 @@ export class TodoController {
 
   @Delete('/:id')
   deleteTodoById(@Param('id') id: string) {
+    if (id === 'all') {
+      return this.todoService.deleteAllTodos();
+    }
     return this.todoService.deleteTodoById(id);
   }
-  
+
   @Put('/:id')
   updateTodoById(@Param('id') id: string, @Req() req) {
     return this.todoService.updateTodoById(id, req.body);
