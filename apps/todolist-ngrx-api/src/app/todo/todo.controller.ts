@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 
 import { TodoService } from './services/todo/todo.service';
 
@@ -9,5 +9,10 @@ export class TodoController {
   @Get()
   getAllTodos() {
     return this.todoService.getAllTodos();
+  }
+
+  @Post()
+  createTodo() {
+    return this.todoService.createTodo();
   }
 }
