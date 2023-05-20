@@ -1,0 +1,47 @@
+<header class="header">Todo List using NgRx</header>
+<main class="content">
+    <header class="form">
+        <form class="todo-form"
+              [formGroup]="todoForm">
+            <mat-form-field subscriptSizing="dynamic">
+                <input matInput
+                       placeholder="Add new todo"
+                       formControlName="todo">
+            </mat-form-field>
+            <button mat-raised-button
+                    (click)="addTodo()"
+                    color="primary">Primary</button>
+        </form>
+    </header>
+    <header class="categories">
+        <li class="todo-categories">
+            <ul class="todo-categories--state active">
+                All(20)
+            </ul>
+            <ul class="todo-categories--state">
+                New(5)
+            </ul>
+            <ul class="todo-categories--state">
+                Active(10)
+            </ul>
+            <ul class="todo-categories--state">
+                Complete(2)
+            </ul>
+            <ul class="todo-categories--state">
+                Postponed(3)
+            </ul>
+        </li>
+    </header>
+    <section>
+        <div class="todo"
+             *ngFor="let todo of todos">
+            <div class="todo--title">{{todo.todo}}</div>
+            <div class="todo--actions">
+                <button class="action action--new">New</button>
+                <button class="action action--active">Active</button>
+                <button class="action action--complete">Complete</button>
+                <button class="action action--postponed">Postponed</button>
+            </div>
+        </div>
+    </section>
+</main>
