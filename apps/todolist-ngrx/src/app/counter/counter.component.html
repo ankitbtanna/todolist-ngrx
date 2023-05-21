@@ -1,1 +1,10 @@
-<p>counter works!</p>
+<h1>{{count$ | async}}</h1>
+
+<section>
+    <button (click)="increment()">Increment</button>
+    <button (click)="decrement()">Decrement</button>
+</section>
+
+<section>
+    <button (click)="reset()">Reset</button>
+</section>

@@ -1,0 +1,25 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 5rem;
+    font-weight: bold;
+  }
+
+  section {
+    button {
+      margin: 1rem;
+      font-size: 3rem;
+      padding: 2rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
