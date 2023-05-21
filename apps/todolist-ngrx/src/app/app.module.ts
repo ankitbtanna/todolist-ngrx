@@ -8,6 +8,7 @@ import { BookListComponent } from './library/book-list/book-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CounterComponent } from './counter/counter.component';
+import { HttpClientModule } from '@angular/common/http';
 import { LibraryComponent } from './library/library.component';
 import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
@@ -26,6 +27,7 @@ import { TodoComponent } from './todo/todo.component';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,

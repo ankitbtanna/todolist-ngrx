@@ -2,10 +2,14 @@
 
 <section>
     <h2>Book List</h2>
-    <todolist-ngrx-book-list></todolist-ngrx-book-list>
+    <todolist-ngrx-book-list [books]="(books$ | async)!"
+                             (add)="addBook($event)"></todolist-ngrx-book-list>
 </section>
 
 <section>
     <h2>My Books Collection</h2>
-    <todolist-ngrx-book-collection></todolist-ngrx-book-collection>
+    <todolist-ngrx-book-collection [books]="(bookCollection$ | async)!"
+                                   (remove)="removeBook($event)"></todolist-ngrx-book-collection>
 </section>
+
+<a routerLink="/">Counter</a>

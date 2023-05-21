@@ -15,7 +15,7 @@ import { Book } from '@todolist-ngrx/state';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookCollectionComponent {
-  @Input() books: ReadonlyArray<Book> = [];
+  @Input() books: Array<Book> = [];
   @Output() remove = new EventEmitter<string>();
 
   removeBook(book: Book) {

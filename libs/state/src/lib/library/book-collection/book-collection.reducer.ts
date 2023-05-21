@@ -1,6 +1,16 @@
-import { Book } from '../models/books.model';
-import { createReducer } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 
-const initialState: Array<Book> = [];
+import { BookActions } from './book-collection.actions';
 
-export const bookCollectionReducer = createReducer(initialState);
+const initialState: Array<string> = [];
+
+export const bookCollectionReducer = createReducer(
+  initialState,
+  on(BookActions.removeBook, (state, { bookId }) =>
+    state.filter((id) => id !== bookId)
+  ),
+  on(BookActions.addBook, (state, { bookId }) => {
+    if (state.indexOf(bookId) > -1) return state;
+    return [...state, bookId];
+  })
+);
