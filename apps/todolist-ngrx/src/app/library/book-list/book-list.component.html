@@ -1,0 +1,5 @@
+<div *ngFor="let book of books">
+    <p>{{book.volumeInfo.title}} by {{book.volumeInfo.authors}}</p>
+
+    <button (click)="addBook(book)">Add Book to My Collection</button>
+</div>
