@@ -9,9 +9,19 @@ import { CounterComponent } from './counter/counter.component';
 import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
 import { TodoComponent } from './todo/todo.component';
+import { BookListComponent } from './book-list/book-list.component';
+import { BookCollectionComponent } from './book-collection/book-collection.component';
+import { LibraryComponent } from './library/library.component';
 
 @NgModule({
-  declarations: [AppComponent, TodoComponent, CounterComponent],
+  declarations: [
+    AppComponent,
+    TodoComponent,
+    CounterComponent,
+    BookListComponent,
+    BookCollectionComponent,
+    LibraryComponent,
+  ],
   imports: [
     AppRoutingModule,
     BrowserModule,
