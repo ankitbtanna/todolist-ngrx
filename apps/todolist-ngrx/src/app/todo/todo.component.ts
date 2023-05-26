@@ -2,12 +2,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   Todo,
   TodoStatus,
+  activeTodosCountSelector,
+  completeTodosCountSelector,
+  newTodosCountSelector,
+  postponedTodosCountSelector,
   todoListManageActions,
   todoSelector,
 } from '@todolist-ngrx/state';
 
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { shareReplay } from 'rxjs';
 
 @Component({
   selector: 'todolist-ngrx-root',
@@ -25,7 +30,12 @@ export class TodoComponent {
   });
 
   todos: Todo[] = [];
-  todos$ = this.store.select(todoSelector);
+
+  todos$ = this.store.select(todoSelector).pipe(shareReplay());
+  newTodosCount$ = this.store.select(newTodosCountSelector);
+  activeTodosCount$ = this.store.select(activeTodosCountSelector);
+  completeTodosCount$ = this.store.select(completeTodosCountSelector);
+  postponedTodosCount$ = this.store.select(postponedTodosCountSelector);
 
   constructor(private store: Store) {}
 

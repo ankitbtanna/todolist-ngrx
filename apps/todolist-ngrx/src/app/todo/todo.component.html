@@ -1,4 +1,4 @@
-<header class="header">Todo List using NgRx {{ (todos$ | async)!.length }}</header>
+<header class="header">Todo List using NgRx</header>
 <main class="content">
     <header class="form">
         <form class="todo-form"
@@ -16,25 +16,25 @@
     <header class="categories">
         <li class="todo-categories">
             <ul class="todo-categories--state active">
-                All(20)
+                All({{(todos$ | async)!.length}})
             </ul>
             <ul class="todo-categories--state">
-                New(5)
+                New({{newTodosCount$ | async}})
             </ul>
             <ul class="todo-categories--state">
-                Active(10)
+                Active({{activeTodosCount$ | async}})
             </ul>
             <ul class="todo-categories--state">
-                Complete(2)
+                Complete({{completeTodosCount$ | async}})
             </ul>
             <ul class="todo-categories--state">
-                Postponed(3)
+                Postponed({{postponedTodosCount$ | async}})
             </ul>
         </li>
     </header>
     <section>
         <div class="todo"
-             *ngFor="let todo of todos">
+             *ngFor="let todo of (todos$ | async)!">
             <div class="todo--title">{{todo.todo}}</div>
             <div class="todo--actions">
                 <button class="action action--new"
