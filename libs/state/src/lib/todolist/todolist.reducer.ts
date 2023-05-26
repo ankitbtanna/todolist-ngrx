@@ -5,7 +5,7 @@ import { todoListManageActions } from './todolist.actions';
 
 const initialState: Array<Todo> = [];
 
-export const addTodoReducer = createReducer(
+export const todosReducer = createReducer(
   initialState,
   on(todoListManageActions.add, (state, { todo }) => [...state, todo]),
   on(todoListManageActions.delete, (state, { id }) =>
