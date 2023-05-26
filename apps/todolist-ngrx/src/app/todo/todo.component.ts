@@ -1,7 +1,13 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  Todo,
+  TodoStatus,
+  todoListManageActions,
+  todoSelector,
+} from '@todolist-ngrx/state';
 
 import { Component } from '@angular/core';
-import { TodoStatus } from './todo.const';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'todolist-ngrx-root',
@@ -12,23 +18,46 @@ export class TodoComponent {
   title = 'todolist-ngrx';
 
   todoForm = new FormGroup({
-    id: new FormControl('', [Validators.required]),
-    todo: new FormControl('', [Validators.required]),
-    status: new FormControl('', [Validators.required]),
-    date: new FormControl('', [Validators.required]),
+    id: new FormControl<string>('', [Validators.required]),
+    todo: new FormControl<string>('', [Validators.required]),
+    status: new FormControl<TodoStatus>(TodoStatus.NEW, [Validators.required]),
+    date: new FormControl<string>('', [Validators.required]),
   });
 
-  todos: any[] = [];
+  todos: Todo[] = [];
+  todos$ = this.store.select(todoSelector);
+
+  constructor(private store: Store) {}
 
   addTodo() {
     this.todoForm.controls.id.setValue(crypto.randomUUID());
     this.todoForm.controls.status.setValue(TodoStatus.NEW);
     this.todoForm.controls.date.setValue(new Date().toISOString());
 
-    console.log(this.todoForm.value);
+    const todo = {
+      ...(this.todoForm.value as Todo),
+    };
 
-    this.todos.push(this.todoForm.value as any);
+    this.todos.push(todo);
+
+    this.store.dispatch(todoListManageActions.add({ todo }));
 
     this.todoForm.reset();
+  }
+
+  markTodoAsNew(id: string): void {
+    this.store.dispatch(todoListManageActions.new({ id }));
+  }
+
+  markTodoAsActive(id: string): void {
+    this.store.dispatch(todoListManageActions.active({ id }));
+  }
+
+  markTodoAsComplete(id: string): void {
+    this.store.dispatch(todoListManageActions.complete({ id }));
+  }
+
+  markTodoAsPostponed(id: string): void {
+    this.store.dispatch(todoListManageActions.postpone({ id }));
   }
 }

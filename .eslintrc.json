@@ -10,13 +10,13 @@
           "error",
           {
             "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [
+            "allow": [
               {
                 "sourceTag": "scope:ui",
                 "onlyDependOnLibsWithTags": ["scope:ui", "scope:shared"]
               }
-            ]
+            ],
+            "depConstraints": []
           }
         ]
       }

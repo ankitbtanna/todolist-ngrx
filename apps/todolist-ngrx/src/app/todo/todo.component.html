@@ -1,4 +1,4 @@
-<header class="header">Todo List using NgRx</header>
+<header class="header">Todo List using NgRx {{ (todos$ | async)!.length }}</header>
 <main class="content">
     <header class="form">
         <form class="todo-form"
@@ -37,10 +37,14 @@
              *ngFor="let todo of todos">
             <div class="todo--title">{{todo.todo}}</div>
             <div class="todo--actions">
-                <button class="action action--new">New</button>
-                <button class="action action--active">Active</button>
-                <button class="action action--complete">Complete</button>
-                <button class="action action--postponed">Postponed</button>
+                <button class="action action--new"
+                        (click)="markTodoAsNew(todo.id)">New</button>
+                <button class="action action--active"
+                        (click)="markTodoAsActive(todo.id)">Active</button>
+                <button class="action action--complete"
+                        (click)="markTodoAsComplete(todo.id)">Complete</button>
+                <button class="action action--postponed"
+                        (click)="markTodoAsPostponed(todo.id)">Postponed</button>
             </div>
         </div>
     </section>
