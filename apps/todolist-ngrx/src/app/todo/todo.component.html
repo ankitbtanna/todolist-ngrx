@@ -15,19 +15,19 @@
     </header>
     <header class="categories">
         <li class="todo-categories">
-            <ul class="todo-categories--state active">
-                All({{(todos$ | async)!.length}})
+            <ul class="todo-categories--state active" (click)="showTodos()">
+                All({{(allTodosCount$ | async)}})
             </ul>
-            <ul class="todo-categories--state">
+            <ul class="todo-categories--state" (click)="showTodos(kinds.NEW)">
                 New({{newTodosCount$ | async}})
             </ul>
-            <ul class="todo-categories--state">
+            <ul class="todo-categories--state" (click)="showTodos(kinds.ACTIVE)">
                 Active({{activeTodosCount$ | async}})
             </ul>
-            <ul class="todo-categories--state">
+            <ul class="todo-categories--state" (click)="showTodos(kinds.COMPLETE)">
                 Complete({{completeTodosCount$ | async}})
             </ul>
-            <ul class="todo-categories--state">
+            <ul class="todo-categories--state" (click)="showTodos(kinds.POSTPONED)">
                 Postponed({{postponedTodosCount$ | async}})
             </ul>
         </li>

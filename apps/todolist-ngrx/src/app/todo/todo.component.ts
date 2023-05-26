@@ -3,9 +3,14 @@ import {
   Todo,
   TodoStatus,
   activeTodosCountSelector,
+  activeTodosSelector,
+  allTodosCountSelector,
   completeTodosCountSelector,
+  completeTodosSelector,
   newTodosCountSelector,
+  newTodosSelector,
   postponedTodosCountSelector,
+  postponedTodosSelector,
   todoListManageActions,
   todoSelector,
 } from '@todolist-ngrx/state';
@@ -29,13 +34,22 @@ export class TodoComponent {
     date: new FormControl<string>('', [Validators.required]),
   });
 
+  kinds = TodoStatus;
+
   todos: Todo[] = [];
 
   todos$ = this.store.select(todoSelector).pipe(shareReplay());
+
+  allTodosCount$ = this.store.select(allTodosCountSelector);
   newTodosCount$ = this.store.select(newTodosCountSelector);
   activeTodosCount$ = this.store.select(activeTodosCountSelector);
   completeTodosCount$ = this.store.select(completeTodosCountSelector);
   postponedTodosCount$ = this.store.select(postponedTodosCountSelector);
+
+  newTodos$ = this.store.select(newTodosSelector);
+  activeTodos$ = this.store.select(activeTodosSelector);
+  completeTodos$ = this.store.select(completeTodosSelector);
+  postponedTodos$ = this.store.select(postponedTodosSelector);
 
   constructor(private store: Store) {}
 
@@ -69,5 +83,29 @@ export class TodoComponent {
 
   markTodoAsPostponed(id: string): void {
     this.store.dispatch(todoListManageActions.postpone({ id }));
+  }
+
+  showTodos(kind?: TodoStatus) {
+    switch (kind) {
+      case TodoStatus.NEW: {
+        this.todos$ = this.newTodos$;
+        break;
+      }
+      case TodoStatus.ACTIVE: {
+        this.todos$ = this.activeTodos$;
+        break;
+      }
+      case TodoStatus.COMPLETE: {
+        this.todos$ = this.completeTodos$;
+        break;
+      }
+      case TodoStatus.POSTPONED: {
+        this.todos$ = this.postponedTodos$;
+        break;
+      }
+      default: {
+        this.todos$ = this.store.select(todoSelector).pipe(shareReplay());
+      }
+    }
   }
 }
